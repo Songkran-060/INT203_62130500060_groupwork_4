@@ -26,7 +26,7 @@
       <div class="text-3xl font-bold inline-block">Thai Dessert ( {{countLike}} )</div>
       <div class="text-right">
         <div v-if="searchBoxOpen" class="inline-block">
-          <input v-model="inputs" placeholder="Enter text to searching photos" class="border w-64 px-2">
+          <input v-model="inputs" placeholder="Searching ... " class="border w-64 px-2">
           <button v-on:click="closeSearch" class="ml-2 bg-blue-500 text-white py-1 px-2 rounded">Cancle</button>
         </div>
         <i v-else="searchBoxOpen" class="material-icons inline-block text-2xl align-text-bottom" @click="openSearch">search</i>
@@ -42,7 +42,7 @@
         </p>
       </div>
     </div>
-    <div>Photo Not Found !!!</div>
+    <div v-if="searchFound" class="text-center mt-4 text-xl">Photo Not Found !!!</div>
   </div>
 
   <!-- my main.js -->
