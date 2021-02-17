@@ -68,8 +68,10 @@ const app = {
         return this.thaides.filter(t => {
           return this.inputs.toLowerCase().split(' ').every(v => t.name.toLowerCase().includes(v))
         })
-      }else{
+      }else if(!this.inputs){
         return this.thaides;
+      }else{
+        
       }
     }
   }
