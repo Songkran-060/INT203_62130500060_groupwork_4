@@ -58,20 +58,23 @@ const app = {
     openSearch() {
       this.searchBoxOpen = !this.searchBoxOpen
     },
+    closeSearch() {
+      this.searchBoxOpen = !this.searchBoxOpen
+      this.inputs = ''
+    }
   },
   computed: {
     countLike() {
       return this.thaides.filter(t => t.isLike).length
     },
     filteredList() {
+      searchFound = true
       if (this.inputs) {
-        return this.thaides.filter(t => {
-          return this.inputs.toLowerCase().split(' ').every(v => t.name.toLowerCase().includes(v))
-        })
+        return this.thaides.filter(t => {return this.inputs.toLowerCase().split(' ').every(v => t.name.toLowerCase().includes(v))})
       }else if(!this.inputs){
         return this.thaides;
       }else{
-        
+        return 
       }
     }
   }

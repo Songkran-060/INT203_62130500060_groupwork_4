@@ -27,7 +27,7 @@
       <div class="text-right">
         <div v-if="searchBoxOpen" class="inline-block">
           <input v-model="inputs" placeholder="Enter text to searching photos" class="border w-64 px-2">
-          <button v-on:click="openSearch" class="ml-2 bg-blue-500 text-white py-1 px-2 rounded">Cancle</button>
+          <button v-on:click="closeSearch" class="ml-2 bg-blue-500 text-white py-1 px-2 rounded">Cancle</button>
         </div>
         <i v-else="searchBoxOpen" class="material-icons inline-block text-2xl align-text-bottom" @click="openSearch">search</i>
       </div>
@@ -37,11 +37,12 @@
         <img :src="t.url" class="w-72 h-44" v-on:dblclick="likeIt(index)">
         <p class="text-center mt-4 text-xl">
           <i v-if="t.isLike" class="material-icons text-red-400 text-base">favorite</i>
-          <i v-else="t.isLike" class="material-icons text-base">favorite_border</i>
+          <i v-else class="material-icons text-base">favorite_border</i>
           {{t.name}}
         </p>
       </div>
     </div>
+    <div>Photo Not Found !!!</div>
   </div>
 
   <!-- my main.js -->
