@@ -1,67 +1,78 @@
 const app = {
   data() {
     return {
-      thaides: [
-        {
-          name: 'บุหลันดั้นเมฆ',
+      thaides: [{
+          name: 'Bu Lan Dan Mek',
           url: './images/1.jpg',
           isLike: false
         },
         {
-          name: 'บุหลันดั้นหมอก',
+          name: 'Bu Lan Dan Mhok',
           url: './images/2.jpg',
           isLike: false
         },
         {
-          name: 'จ่ามงกุฏ ไทยแท้ดั้งเดิม สมัย ร.๒',
+          name: 'Ja Mong Kut (Original)',
           url: './images/3.jpg',
           isLike: false
         },
         {
-          name: 'จ่ามงกุฏ ยุคปัจจุบัน',
+          name: 'Ja Mong Kut (Now)',
           url: './images/4.jpg',
           isLike: false
         },
         {
-          name: 'ลืมกลืน',
+          name: 'Leum Guen',
           url: './images/5.jpg',
           isLike: false
         },
         {
-          name: 'พระพาย',
+          name: 'Phra Pai',
           url: './images/6.jpg',
           isLike: false
         },
         {
-          name: 'ช่อม่วง',
+          name: 'Cho maung',
           url: './images/7.jpg',
           isLike: false
         },
         {
-          name: 'ลูกชุบ',
+          name: 'Look Chub',
           url: './images/8.jpg',
           isLike: false
         },
         {
-          name: 'ทองเอก',
+          name: 'Thong Eak',
           url: './images/9.jpg',
           isLike: false
         }
-      ]
+      ],
+      inputs: '',
+      searchBoxOpen: false
     }
-  }
-  ,
+  },
   methods: {
-    likeIt(index){
+    likeIt(index) {
       this.thaides[index].isLike = !this.thaides[index].isLike
+    },
+    openSearch() {
+      this.searchBoxOpen = !this.searchBoxOpen
+    },
+  },
+  computed: {
+    countLike() {
+      return this.thaides.filter(t => t.isLike).length
+    },
+    filteredList() {
+      if (this.inputs) {
+        return this.thaides.filter(t => {
+          return this.inputs.toLowerCase().split(' ').every(v => t.name.toLowerCase().includes(v))
+        })
+      }else{
+        return this.thaides;
+      }
     }
   }
-  ,
-  computed: {
-    countLike(){
-        return this.thaides.filter( t => t.isLike ).length
-    }
-}
 
 }
 Vue.createApp(app).mount('#app')
