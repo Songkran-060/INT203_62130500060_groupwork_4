@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic Vue Js - HelloWorld App</title>
+  <title>Thai Dessert</title>
 
   <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
   <!-- Using via Google Web Fonts -->
@@ -27,14 +27,25 @@
       <div class="text-right">
         <div v-if="searchBoxOpen" class="inline-block">
           <input v-model="inputs" placeholder="Searching ... " class="border w-64 px-2">
-          <button v-on:click="closeSearch" class="ml-2 bg-blue-500 text-white py-1 px-2 rounded">Cancle</button>
+          <button @click="closeSearch" class="ml-2 bg-blue-500 text-white py-1 px-2 rounded">Cancle</button>
         </div>
         <i v-else="searchBoxOpen" class="material-icons inline-block text-2xl align-text-bottom" @click="openSearch">search</i>
       </div>
     </div>
     <div class="grid grid-cols-3 auto-rows-auto gap-10 ">
+      <div></div>
+      <div id="imgCanvas">
+        <div class="bg-white text-xl rounded font-medium mt-6 py-4 mx-auto my-auto w-80 h-60">
+            <div class="px-auto" v-if="showImages">
+                <img class="w-72 h-44 mx-auto" :src="thaides[currentIndex].url" @click="hideImg(index)">
+            </div>
+            <p class="pt-2 text-center text-lg" v-if="showImages"> {{ thaides[currentIndex].name }} </p>
+            <p class="p-2 my-16 text-lg	text-center" v-else>Preview here.</p>
+        </div>
+    </div>
+      <div></div>
       <div v-for="(t,index) in filteredList" class="mx-auto">
-        <img :src="t.url" class="w-72 h-44" v-on:dblclick="likeIt(index)">
+        <img :src="t.url" class="w-72 h-44" v-on:dblclick="likeIt(index)" @mouseover="showImg(index)">
         <p class="text-center mt-4 text-xl">
           <i v-if="t.isLike" class="material-icons text-red-400 text-base">favorite</i>
           <i v-else class="material-icons text-base">favorite_border</i>
@@ -42,7 +53,7 @@
         </p>
       </div>
     </div>
-    <div v-if="searchFound" class="text-center mt-4 text-xl">Photo Not Found !!!</div>
+    <div v-if="searchFound" class="text-center mt-4 text-7xl">Photo Not Found !!!</div>
   </div>
 
   <!-- my main.js -->
