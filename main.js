@@ -58,10 +58,7 @@ const app = {
     likeIt(index) {
       this.thaides[index].isLike = !this.thaides[index].isLike
     },
-    openSearch() {
-      this.searchBoxOpen = !this.searchBoxOpen
-    },
-    closeSearch() {
+    switchSearch() {
       this.searchBoxOpen = !this.searchBoxOpen
       this.inputs = ''
     },
@@ -69,9 +66,8 @@ const app = {
       this.showImages = true;
       this.currentIndex = index;
     },
-    hideImg(index) {
+    hideImg() {
       this.showImages = false;
-      this.currentIndex = index;
     }
     
   },
